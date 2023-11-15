@@ -38,5 +38,8 @@ $requeteSelect = "SELECT * FROM fichiers";
 $resultat = $connexion->query($requeteSelect);
 
 
+header('Location: /');
+exit();
+
 // Fermeture de la connexion
 $connexion->close();
