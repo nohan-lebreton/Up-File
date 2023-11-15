@@ -37,12 +37,6 @@ if (isset($_POST['submit'])) {
 $requeteSelect = "SELECT * FROM fichiers";
 $resultat = $connexion->query($requeteSelect);
 
-// Affichage des fichiers dans le HTML
-echo "<ul>";
-while ($row = $resultat->fetch_assoc()) {
-    echo "<li><a href='" . $row['path'] . "' target='_blank'>" . $row['name'] . "</a></li>";
-}
-echo "</ul>";
 
 // Fermeture de la connexion
 $connexion->close();
