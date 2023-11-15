@@ -1,9 +1,9 @@
 <?php
 
 // Connexion à la base de données (à ajuster selon tes paramètres)
-$serveur = "10.95.135.84";
+$serveur = "localhost";
 $utilisateur = "root";
-$motdepasse = "rIrH~&um?a5(0,i?KgHs";
+$motdepasse = "root";
 $basededonnees = "upfile";
 
 $connexion = new mysqli($serveur, $utilisateur, $motdepasse, $basededonnees);
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($cheminTemporaire, $destination);
 
     // Insertion des informations dans la base de données
-    $requete = "INSERT INTO fichiers (nom, type, taille, chemin) VALUES ('$nomFichier', '$typeFichier', $tailleFichier, '$destination')";
+    $requete = "INSERT INTO fichiers (name, size, path) VALUES ('$nomFichier', $tailleFichier, '$destination')";
     if ($connexion->query($requete) === TRUE) {
         echo "Fichier ajouté avec succès à la base de données.";
     } else {
@@ -40,7 +40,7 @@ $resultat = $connexion->query($requeteSelect);
 // Affichage des fichiers dans le HTML
 echo "<ul>";
 while ($row = $resultat->fetch_assoc()) {
-    echo "<li><a href='" . $row['chemin'] . "' target='_blank'>" . $row['nom'] . "</a></li>";
+    echo "<li><a href='" . $row['path'] . "' target='_blank'>" . $row['name'] . "</a></li>";
 }
 echo "</ul>";
 
