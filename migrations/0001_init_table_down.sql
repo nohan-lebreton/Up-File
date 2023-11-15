@@ -1,0 +1,5 @@
+CREATE TABLE upfile (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    size INT,
+    path VARCHAR(255)
+);
